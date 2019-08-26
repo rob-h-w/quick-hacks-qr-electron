@@ -4,11 +4,16 @@ export type counterStateType = {
   +counter: number
 };
 
+export type messageStatetype = {
+  +message: string
+};
+
 export type Action = {
+  +message: string,
   +type: string
 };
 
-export type GetState = () => counterStateType;
+export type GetState = () => messageStatetype;
 
 export type Dispatch = ReduxDispatch<Action>;
 
