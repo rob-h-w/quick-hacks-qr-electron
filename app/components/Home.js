@@ -1,5 +1,8 @@
 // @flow
-import React, { Component, useRef } from 'react';
+import { remote } from 'electron';
+const { dialog } = remote;
+import { writeFileSync } from 'fs';
+import React, { Component, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -19,11 +22,30 @@ function Home(props: Props) {
   const onInput = () => {
     setMessage(inputElement.current.value);
   };
+  const onSave = () => {
+    const filePath = dialog.showSaveDialog({
+      filters: [
+        {
+          name: 'Images',
+          extensions: ['png']
+        }
+      ]
+    });
+
+    if (filePath) {
+      writeFileSync(filePath, pngBuffer);
+    }
+  };
+
+  const [pngBuffer, setPngBuffer] = useState(null);
   return (
     <div className={styles.container} data-tid="container">
       <h2>Generate a QR code</h2>
-      <QR message={message} />
+      <QR message={message} onPng={setPngBuffer} />
       <input ref={inputElement} onInput={onInput}></input>
+      <button disabled={pngBuffer === null} onClick={onSave}>
+        Save
+      </button>
     </div>
   );
 }

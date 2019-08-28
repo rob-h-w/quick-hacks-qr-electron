@@ -1,3 +1,4 @@
+// @flow
 /*
  * QR Code generator library (TypeScript)
  *
@@ -22,7 +23,6 @@
  */
 
 "use strict";
-
 
 export namespace qrcodegen {
 
