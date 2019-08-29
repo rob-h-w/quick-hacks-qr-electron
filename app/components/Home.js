@@ -40,12 +40,24 @@ function Home(props: Props) {
   const [pngBuffer, setPngBuffer] = useState(null);
   return (
     <div className={styles.container} data-tid="container">
-      <h2>Generate a QR code</h2>
-      <QR message={message} onPng={setPngBuffer} />
-      <input ref={inputElement} onInput={onInput}></input>
-      <button disabled={pngBuffer === null} onClick={onSave}>
-        Save
-      </button>
+      <div className={styles.top}>
+        <h2 className={styles.content}>Generate a QR code</h2>
+        <QR className={styles.content} message={message} onPng={setPngBuffer} />
+      </div>
+      <div className={styles.entry}>
+        <textarea
+          className={styles.content}
+          ref={inputElement}
+          onInput={onInput}
+        ></textarea>
+        <button
+          className={styles.content}
+          disabled={pngBuffer === null}
+          onClick={onSave}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,25 @@
 .container {
-  position: absolute;
-  top: 30%;
-  left: 10px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.content {
+  margin: 1rem;
+}
+
+textarea {
+  width: 80%;
 }
 
 .container h2 {
