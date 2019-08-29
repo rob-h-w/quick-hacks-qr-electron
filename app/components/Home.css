@@ -19,11 +19,12 @@
 }
 
 textarea {
-  width: 80%;
+  width: 100%;
 }
 
 .container h2 {
   font-size: 5rem;
+  width: 100%;
 }
 
 .container a {

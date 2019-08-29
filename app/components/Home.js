@@ -22,6 +22,18 @@ function Home(props: Props) {
   const onInput = () => {
     setMessage(inputElement.current.value);
   };
+  const onQrError = error => {
+    const msg = error.message
+      ? error.message
+      : typeof error === 'string'
+      ? error
+      : 'something went wrong';
+    if (inputElement.current) {
+      inputElement.current.value = msg;
+    }
+
+    setMessage(msg);
+  };
   const onSave = () => {
     const filePath = dialog.showSaveDialog({
       filters: [
@@ -42,11 +54,17 @@ function Home(props: Props) {
     <div className={styles.container} data-tid="container">
       <div className={styles.top}>
         <h2 className={styles.content}>Generate a QR code</h2>
-        <QR className={styles.content} message={message} onPng={setPngBuffer} />
+        <QR
+          className={styles.content}
+          message={message}
+          onError={onQrError}
+          onPng={setPngBuffer}
+        />
       </div>
       <div className={styles.entry}>
         <textarea
           className={styles.content}
+          rows={10}
           ref={inputElement}
           onInput={onInput}
         ></textarea>
