@@ -63,6 +63,7 @@ function Home(props: Props) {
       </div>
       <div className={styles.entry}>
         <textarea
+          autoFocus={true}
           className={styles.content}
           rows={10}
           ref={inputElement}

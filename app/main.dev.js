@@ -14,6 +14,8 @@ import { app, BrowserWindow } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 
+import menu from './menu';
+
 export default class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
@@ -72,6 +74,8 @@ app.on('ready', async () => {
     height: 728
   });
   mainWindow.setMenuBarVisibility(false);
+
+  menu(mainWindow);
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
 
