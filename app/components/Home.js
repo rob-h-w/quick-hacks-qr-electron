@@ -1,6 +1,5 @@
 // @flow
 import { remote } from 'electron';
-const { dialog } = remote;
 import { writeFileSync } from 'fs';
 import React, { Component, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -10,6 +9,8 @@ import routes from '../constants/routes';
 import styles from './Home.css';
 import QR from './QR';
 import * as MessageActions from '../actions/message';
+
+const { dialog } = remote;
 
 type Props = {
   message: string,
@@ -63,7 +64,7 @@ function Home(props: Props) {
       </div>
       <div className={styles.entry}>
         <textarea
-          autoFocus={true}
+          autoFocus
           className={styles.content}
           rows={10}
           ref={inputElement}
